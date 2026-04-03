@@ -17,5 +17,8 @@ D:/groq_key.txt
 # Screenshots
 *.png
 
+# Allow demo videos
+!demos/*.mp4
+
 # Logs
 sc_log.txt
