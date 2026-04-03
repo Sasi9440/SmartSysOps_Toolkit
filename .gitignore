@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Sensitive files — never upload these
+.env
+groq_key.txt
+D:/groq_key.txt
+
+# Runtime data files
+*.json
+*.txt
+!README.md
+!requirements.txt
+
+# Screenshots
+*.png
+
+# Logs
+sc_log.txt
