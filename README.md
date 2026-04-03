@@ -1,6 +1,6 @@
-# System Commander
+# SmartSysOps Toolkit
 
-A CLI tool to manage files, system settings, and apps — all from one place.
+A powerful AI-powered CLI toolkit to manage files, system settings, processes, and apps — all from one place.
 File operations are **restricted to D:\ drive only**.
 
 ---
@@ -18,6 +18,21 @@ File operations are **restricted to D:\ drive only**.
 
 ---
 
+## Features
+
+- 🤖 **AI Code Generator** — Generate code into any file using Groq AI
+- 📁 **File Operations** — Create, delete, move, copy, zip, search and more
+- ⚙️ **System Controls** — Volume, brightness, WiFi, Bluetooth, battery
+- 📊 **System Monitor** — Live CPU/RAM, processes, network speed, health score
+- 🔐 **Security** — File encryption, password checker, restricted to D:\ only
+- 📝 **Productivity** — Notes, todo, scheduler, reminders, pomodoro timer
+- 🛠️ **Dev Tools** — HTTP requests, regex tester, port scanner, JSON tools
+- 🎨 **Unique Features** — Matrix rain, ASCII banner, morse code, QR generator
+- 🌐 **Network Tools** — GeoIP, DNS lookup, speedtest, ping, public IP
+- 📦 **100+ Commands** across all categories
+
+---
+
 ## Setup
 
 ```bash
@@ -26,6 +41,16 @@ python main.py
 ```
 
 > Run as Administrator for WiFi, Bluetooth, and brightness controls to work properly.
+
+---
+
+## Quick Start
+
+```
+>> ai setkey <your_groq_api_key>
+>> ai gen myfolder/app.py write a python calculator
+>> run myfolder/app.py
+```
 
 ---
 
@@ -46,48 +71,63 @@ All paths are relative to `D:\`
 | `list myproject` | List a subfolder |
 | `read notes.txt` | Print file contents |
 | `write notes.txt Hello World` | Write text to file |
+| `search report` | Find files by name |
+| `tree myproject` | Show folder tree |
+| `zip myproject backup.zip` | Zip a folder |
+| `hash notes.txt` | MD5 & SHA256 of file |
+
+### AI Code Generator
+
+| Command | Description |
+|---|---|
+| `ai setkey <key>` | Save your Groq API key |
+| `ai gen <file> <prompt>` | Generate code into a file |
+| `ai ask <prompt>` | Ask AI anything |
 
 ### System Controls
 
 | Command | Description |
 |---|---|
 | `volume 70` | Set volume to 70% |
-| `volume` | Show current volume |
 | `brightness 50` | Set brightness to 50% |
-| `brightness` | Show current brightness |
 | `mute` | Toggle mute on/off |
-| `wifi on` | Enable WiFi |
-| `wifi off` | Disable WiFi |
-| `wifi status` | Show WiFi status |
-| `wifi list` | List nearby networks |
-| `bluetooth on` | Enable Bluetooth |
-| `bluetooth off` | Disable Bluetooth |
-| `bluetooth status` | Show Bluetooth status |
+| `wifi on/off/status/list` | WiFi control |
+| `bluetooth on/off/status` | Bluetooth control |
 | `battery` | Show battery percentage |
+| `sysinfo` | CPU, RAM, OS, uptime |
+| `dashboard` | Full system overview |
 | `lock` | Lock the screen |
 | `sleep` | Put PC to sleep |
 | `restart` | Restart PC |
 | `shutdown` | Shutdown PC |
 
-### App Launcher
+### Productivity
 
 | Command | Description |
 |---|---|
-| `open chrome` | Open Chrome |
-| `open notepad` | Open Notepad |
-| `open vlc` | Open VLC |
-| `apps list` | List all known apps |
-| `apps add myapp C:\path\to\app.exe` | Register a custom app |
-| `apps remove myapp` | Remove a custom app |
+| `note add <text>` | Save a quick note |
+| `todo add <task>` | Add a task |
+| `remind 60 meeting` | Popup reminder after 60s |
+| `schedule 09:00 note add standup` | Daily scheduled command |
+| `pomodoro` | Start pomodoro timer |
+| `timer 300 break` | Countdown timer |
 
-Built-in apps: `notepad`, `calculator`, `paint`, `explorer`, `cmd`, `powershell`,
-`taskmgr`, `control`, `settings`, `chrome`, `firefox`, `edge`, `vlc`, `vscode`,
-`word`, `excel`, `powerpoint`, `spotify`, `discord`, `whatsapp`, `telegram`, `camera`
+### Unique & Fun
+
+| Command | Description |
+|---|---|
+| `matrix` | Matrix digital rain |
+| `banner Hello` | ASCII art banner |
+| `morse hello` | Play morse code audio |
+| `qrgen https://github.com` | Generate ASCII QR code |
+| `joke` | Random dad joke |
+| `fact` | Random interesting fact |
+| `brain` | Mental math quiz |
 
 ---
 
 ## Notes
 - WiFi/Bluetooth controls require **Administrator** privileges
 - Brightness control works on laptops with supported display drivers
-- Custom apps are saved to `D:\custom_apps.txt`
-- No access outside of `D:\` is allowed for file operations
+- All file operations are restricted to `D:\` — no access to other drives
+- API key is stored securely in `.env` (never committed to git)

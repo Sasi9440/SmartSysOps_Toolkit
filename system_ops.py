@@ -11,8 +11,21 @@ def _get_volume_interface():
 
 def set_volume(level):
     try:
+        try:
+            current_vol = _get_volume_interface().GetMasterVolumeLevelScalar() * 100
+        except:
+            current_vol = 50
+            
+        if isinstance(level, str):
+            level_str = level.lower()
+            if level_str in ("up", "increase", "+"): level = min(100, current_vol + 10)
+            elif level_str in ("down", "decrease", "-"): level = max(0, current_vol - 10)
+            elif level_str.startswith("+") and level_str[1:].isdigit(): level = min(100, current_vol + int(level_str[1:]))
+            elif level_str.startswith("-") and level_str[1:].isdigit(): level = max(0, current_vol - int(level_str[1:]))
+            else: level = int(level)
+            
         _get_volume_interface().SetMasterVolumeLevelScalar(max(0.0, min(1.0, int(level) / 100)), None)
-        print(f"Volume set to {level}%")
+        print(f"Volume set to {int(level)}%")
     except Exception:
         try:
             subprocess.run(["powershell", "-Command",
@@ -44,18 +57,38 @@ def get_volume():
 def set_brightness(level):
     try:
         import screen_brightness_control as sbc
-        sbc.set_brightness(int(level))
+        
+        if isinstance(level, str):
+            level_str = level.lower()
+            current_vals = sbc.get_brightness()
+            current = current_vals[0] if isinstance(current_vals, list) else current_vals
+            
+            if level_str in ("up", "increase", "+"):
+                level = min(100, current + 10)
+            elif level_str in ("down", "decrease", "-"):
+                level = max(0, current - 10)
+            elif level_str.startswith("+") and level_str[1:].isdigit():
+                level = min(100, current + int(level_str[1:]))
+            elif level_str.startswith("-") and level_str[1:].isdigit():
+                level = max(0, current - int(level_str[1:]))
+            else:
+                level = int(level)
+
+        sbc.set_brightness(level)
         print(f"Brightness set to {level}%")
     except Exception as e:
-        print(f"Brightness error: {e}")
+        from colors import warn
+        warn(f"Brightness error: {e} (Desktop displays often don't support control)")
 
 def get_brightness():
     try:
         import screen_brightness_control as sbc
         b = sbc.get_brightness()
-        print(f"Current brightness: {b}%")
+        val = b[0] if isinstance(b, list) else b
+        print(f"Current brightness: {val}%")
     except Exception as e:
-        print(f"Brightness error: {e}")
+        from colors import warn
+        warn(f"Brightness error: {e} (Desktop displays often don't support control)")
 
 def wifi(action):
     action = action.lower()
