@@ -3,6 +3,24 @@
 A powerful AI-powered CLI toolkit to manage files, system settings, processes, and apps — all from one place.
 File operations are **restricted to D:\ drive only**.
 
+> 🚀 Built with Python | 🤖 Powered by Groq AI | 🔐 Secured to D:\ | 💻 Windows Only
+
+---
+
+## What is SmartSysOps Toolkit?
+
+SmartSysOps Toolkit is an all-in-one command-line powerhouse for Windows. Instead of juggling multiple tools, scripts, and apps — you get **everything in one terminal**:
+
+- Ask AI to write code and run it instantly
+- Control your system (volume, brightness, WiFi, Bluetooth)
+- Monitor CPU, RAM, network speed in real time
+- Manage files with 20+ file commands
+- Track habits, take notes, set reminders
+- Encrypt files, scan ports, test APIs
+- Have fun with Matrix rain, morse code, QR codes and more
+
+All file operations are **sandboxed to D:\ drive** — nothing can touch your system files.
+
 ---
 
 ## Demo
